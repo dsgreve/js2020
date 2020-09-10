@@ -45,3 +45,46 @@ books.forEach(function (book) {
   console.log(book.title.toUpperCase())
 })
 
+// MAP creates a new array with the results of calling a callback on every element
+const texts = ['rofl', 'lol', 'omg', 'ttyl'];
+const caps = texts.map(function (t) {
+  return t.toUpperCase();
+})
+console.log(texts);
+console.log(caps);
+
+const numDetail = numbers.map(function (n) {
+  return {
+    value: n,
+    isEven: n % 2 === 0
+  }
+})
+
+const abbrvs = texts.map(function (text) {
+  return text.toUpperCase().split('').join('.')
+})
+
+const bookTitle = books.map(function (b) {
+  return b.title
+})
+
+// ARROW FUNCTIONS
+// arrow function if only one param you can leave paratheses off
+// if no arguements you need to add empty parathes
+const squareOne = function (x) {
+  return x * x;
+}
+
+const squareTwo = x => {
+  return x * x;
+}
+const isEven = num => {
+  return num % 2 === 0;
+}
+
+const multiply = (x, y) => {
+  return x * y
+}
+
+
+const square = n => n * n;
