@@ -1,0 +1,38 @@
+{
+  "name": "js2020",
+  "version": "1.0.0",
+  "description": "Understanding Scope - variable visibility\r Depending on where you define your variable other pieces of code may or may not be able to access it.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsgreve/js2020.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsgreve/js2020/issues"
+  },
+  "homepage": "https://github.com/dsgreve/js2020#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.3.0",
+    "csv-loader": "^3.0.3",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
