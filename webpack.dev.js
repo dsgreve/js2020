@@ -3,10 +3,10 @@ const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: 'development',
   devtool: 'inline-source-map',
   output: {
-    filename: 'bundle.[contentHash].js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   }
 });

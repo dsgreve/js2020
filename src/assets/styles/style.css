@@ -1,0 +1,10 @@
+h1 {
+  font-size: 1.6rem;
+  color: purple;
+}
+.hello {
+  color: red;
+  background-image: url("../images/freelancer.svg");
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}

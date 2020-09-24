@@ -4,25 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: {
-    app: './src/index.js',
-    print: './src/print.js',
-  },
-  plugins: [
-    new CleanWebpackPlugin({cleanStaleWebpackAssets: false}),
-    new HTMLWebpackPlugin({
-      title: 'Output Management',
-    })
-  ],
+  entry: './src/assets/scripts/index.js',
   devtool: 'inline-source-map',
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
+  plugins: [new HTMLWebpackPlugin()]
+  ,
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
           'style-loader',
           'css-loader'
