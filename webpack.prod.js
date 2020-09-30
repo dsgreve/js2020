@@ -7,6 +7,6 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.[contentHash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'app/dist')
   }
 });

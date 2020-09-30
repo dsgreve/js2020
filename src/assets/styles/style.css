@@ -5,6 +5,8 @@ h1 {
 .hello {
   color: red;
   background-image: url("../images/freelancer.svg");
+  background-size: contain;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
+  height: 300px;
 }

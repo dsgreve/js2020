@@ -4,9 +4,9 @@
   "description": "Understanding Scope - variable visibility\r Depending on where you define your variable other pieces of code may or may not be able to access it.",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "validator": "^13.1.17"
   }
 }
