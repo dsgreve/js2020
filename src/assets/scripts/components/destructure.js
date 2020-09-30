@@ -64,3 +64,4 @@ const response = [
 function parseResponse([protocol, statusCode, contentType]) {
   console.log(`Status: ${statusCode}`)
 }
+alert("destructure")

@@ -27,6 +27,8 @@ function repeatNTimes(action, num) {
   }
 }
 
+export default repeatNTimes;
+
 //repeatNTimes(cry, 50)
 
 function pickOne(f1, f2) {
