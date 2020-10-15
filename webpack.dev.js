@@ -11,6 +11,7 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, 'app/dist')
   },
   devServer: {
+    host: '127.0.0.1',
     port: 8080,
     contentBase: path.resolve(__dirname, 'app/dist'),
     hot: true
