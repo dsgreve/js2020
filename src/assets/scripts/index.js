@@ -11,6 +11,13 @@ console.log(tripleMe(10))
 document.querySelector("h1").innerText = 'Hey Judy'
 document.querySelector("h2").classList.add ('hello')
 
+const allLis = document.querySelectorAll('li')
+
+for (let i = 0; i < allLis; i++) {
+  console.log(allLis[0].innerText)
+}
+
+alert('loaded again')
 if (module.hot) {
   module.hot.accept()
 }
