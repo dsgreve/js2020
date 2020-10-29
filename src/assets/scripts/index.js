@@ -9,7 +9,7 @@ console.log(tripleMe(10))
 */
 
 document.querySelector("h1").innerText = 'Hey Judy'
-document.querySelector("h2").classList.add ('hello')
+document.querySelector("h2").classList.add('hello')
 
 const allLis = document.querySelectorAll('li')
 
