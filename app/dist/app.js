@@ -11,26 +11,27 @@ btn.addEventListener('mouseover', function () {
   btn.style.top = `${height}px`;
 });
 
-const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'indigo', 'violet'];
+const input = document.querySelector('#username');
 
-const h1 = document.querySelector('h1');
-h1.addEventListener('mouseover', function () {
-  console.log(this.innerText);
+input.addEventListener('keydown', function (e) {
+  console.log('KEY DOWN!')
+})
+input.addEventListener('keyup', function (e) {
+  console.log('KEY UP!')
+})
+input.addEventListener('keypress', function (e) {
 
 })
-const changeColor = function () {
-  console.log(this);
-  h1.style.color = this.style.backgroundColor;
-  console.log(this.style.backgroundColor);
-}
 
-//const h1 = document.querySelector('h1')
-const container = document.querySelector('#boxes');
+const addItemInput = document.querySelector('#addItem');
+const itemsUL = document.querySelector('#items');
 
-for (let color of colors) {
-  const box = document.createElement('div')
-  box.style.backgroundColor = color;
-  box.classList.add('box');
-  container.appendChild(box);
-  box.addEventListener('click', changeColor);
-}
+addItemInput.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    const newItemText = this.value;
+    const newItem = document.createElement('li');
+    newItem.innerText = newItemText
+    itemsUL.appendChild(newItem)
+    this.value = '';
+  }
+})
