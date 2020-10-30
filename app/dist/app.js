@@ -11,11 +11,20 @@ btn.addEventListener('mouseover', function () {
   btn.style.top = `${height}px`;
 });
 
-const printColor = function (box) {
-  console.log(box.style.backgroundColor)
-}
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'indigo', 'violet'];
 
+const h1 = document.querySelector('h1');
+h1.addEventListener('mouseover', function () {
+  console.log(this.innerText);
+
+})
+const changeColor = function () {
+  console.log(this);
+  h1.style.color = this.style.backgroundColor;
+  console.log(this.style.backgroundColor);
+}
+
+//const h1 = document.querySelector('h1')
 const container = document.querySelector('#boxes');
 
 for (let color of colors) {
@@ -23,5 +32,5 @@ for (let color of colors) {
   box.style.backgroundColor = color;
   box.classList.add('box');
   container.appendChild(box);
-  box.addEventListener('click', printColor())
+  box.addEventListener('click', changeColor);
 }
