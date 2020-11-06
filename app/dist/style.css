@@ -53,3 +53,19 @@ li {
 }
 
 #issMap { height: 350px; margin: 0 auto 50px; }
+body {
+  position: relative;
+}
+img {
+	width: 100px;
+	position: absolute;
+	top: 100px;
+	left: 100px;
+}
+
+#player {
+  z-index: 999;
+}
+#coin {
+  z-index: 800;
+}

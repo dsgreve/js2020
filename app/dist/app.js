@@ -1,37 +1,55 @@
-// the thing    event type    code to run
-// button       click         change color
-// input        hits return   get results
+function isTouching(a, b) {
+  const aRect = a.getBoundingClientRect();
+  const bRect = b.getBoundingClientRect();
 
-const btn = document.querySelector('#clicker')
-btn.addEventListener('mouseover', function () {
-  console.log('moused over me')
-  const height = Math.floor(Math.random() * window.innerHeight)
-  const width = Math.floor(Math.random() * window.innerWidth)
-  btn.style.left = `${width}px`;
-  btn.style.top = `${height}px`;
+  return !(
+    aRect.top + aRect.height < bRect.top ||
+    aRect.top > bRect.top + bRect.height ||
+    aRect.left + aRect.width < bRect.left ||
+    aRect.left > bRect.left + bRect.width
+  );
+}
+
+const avatar = document.querySelector('#player');
+const coin = document.querySelector('#coin');
+
+window.addEventListener('keyup', function (e) {
+  if (e.key === 'ArrowDown' || e.key === 'down') {
+    moveVertical(avatar, 50)
+
+  } else if (e.key === 'ArrowUp' || e.key === 'up') {
+    moveVertical(avatar, -50);
+  } else if (e.key === 'ArrowRight' || e.key === 'right') {
+    const currLeft = extractPos(avatar.style.left);
+    moveHorizontal(avatar, 50);
+    avatar.style.transform = 'scale(1,1)';
+  } else if (e.key === 'ArrowLeft' || e.key === 'left') {
+    moveHorizontal(avatar, -50);
+    avatar.style.transform = 'scale(-1,1)';
+  }
+  if (isTouching(avatar, coin)) moveCoin();
 });
 
-const input = document.querySelector('#username');
+const moveVertical = (element, amount) => {
+  const currTop = extractPos(element.style.top);
+  element.style.top = `${currTop + amount}px`;
+}
 
-input.addEventListener('keydown', function (e) {
-  console.log('KEY DOWN!')
-})
-input.addEventListener('keyup', function (e) {
-  console.log('KEY UP!')
-})
-input.addEventListener('keypress', function (e) {
+const moveHorizontal = (element, amount) => {
+  const currLeft = extractPos(element.style.left);
+  element.style.left = `${currLeft + amount}px`;
+}
 
-})
+const extractPos = (pos) => {
+  if (!pos) return 100;
+  return parseInt(pos.slice(0, -2));
+}
 
-const addItemInput = document.querySelector('#addItem');
-const itemsUL = document.querySelector('#items');
+const moveCoin = () => {
+  const x = Math.floor(Math.random() * window.innerWidth);
+  const y = Math.floor(Math.random() * window.innerHeight);
+  coin.style.top = `${y}px`
+  coin.style.left = `${x}px`
+}
 
-addItemInput.addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    const newItemText = this.value;
-    const newItem = document.createElement('li');
-    newItem.innerText = newItemText
-    itemsUL.appendChild(newItem)
-    this.value = '';
-  }
-})
+moveCoin();
