@@ -88,3 +88,45 @@ const multiply = (x, y) => {
 
 
 const square = n => n * n;
+
+// promises
+const btn = document.querySelector('button');
+// setTimeout(() => {
+//   btn.style.transform = `translateX(100px)`
+//   setTimeout(() => {
+//     btn.style.transform = `translateX(200px)`
+//   }, 1000)
+//   setTimeout(() => {
+//     btn.style.transform = `translateX(300px)`
+//   }, 1000)
+//   setTimeout(() => {
+//     btn.style.transform = `translateX(400px)`
+//   }, 1000)
+// }, 1000)
+
+const moveX = (element, amount, delay, callback) => {
+  const bodyBoundry = document.body.clientWidth;
+  const elRight = element.getBoundingClientRect().right;
+  const currLeft = element.getBoundingClientRect().left;
+  if (elRight + amount > bodyBoundry) {
+    console.log("Done")
+  } else {
+    setTimeout(() => {
+      element.style.transform = `translateX(${currLeft + amount}px)`;
+      if (callback) callback();
+    }, delay)
+  }
+
+}
+
+moveX(btn, 100, 2000, () => {
+  moveX(btn, 100, 1000, () => {
+    moveX(btn, 100, 1000, () => {
+      moveX(btn, 100, 1000, () => {
+        moveX(btn, 800)
+      })
+    })
+  });
+})
+
+// success or failure callback
