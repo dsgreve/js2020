@@ -1,112 +1,44 @@
-// Promises A promise is a object representing the eventual completion or failure of an asynchronous operation -- avoid 'callback hell'
+//** XMLHttpRequest */
 
-//const { reject } = require("lodash");
+// from MDN
+// var oReq = new XMLHttpRequest();
+// oReq.addEventListener("load", reqListener);
+// oReq.open("GET", "http://www.example.org/example.txt");
+// oReq.send();
 
-// const willGetADog = new Promise((resolve, reject) => {
-//   const rand = Math.random();
-//   if (rand < 0.5) {
-//     resolve();
-//   } else {
-//     reject();
-//   }
-// });
-// willGetADog.then(() => {
-//     console.log("We got a dog");
-//   }).catch(() => {
-//     console.log("No Dog for you");
-// });
+// function reqLister() {
+//   console.log(this.responseText)
+// }
 
-const fakeRequest = (url) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-        const pages = {
-          '/users': [
-            {id: 1, username: 'Bilbo'},
-            {id: 5, username: 'Esmerelda'}
-          ],
-          '/users/1': {
-            id: 1,
-            username: 'Bilbo',
-            upvotes: 360,
-            city: 'Lisbon',
-            topPostId: 454321
-          },
-          '/users/5': {
-            id: 5,
-            username: 'Esmerelda',
-            upvotes: 571,
-            city: 'Honolulu'
-          },
-          '/posts/454321' :  {
-            id: 454321,
-            title : 'Ladies and Gentlman I introduce you to Hamlet!'
-          },
-          '/about': 'This is the about page!'
-        }
+const firstReq = new XMLHttpRequest();
 
-        const data = pages[url];
-        if (data) {
-          resolve({status: 200, data});
-        }
-        else {
-          reject({status: 404})
-        }
-    },
-    1000)
-  });
-};
+firstReq.addEventListener('load', function() {
+  console.log('FIRST REQUEST!!!!');
+  // convert JSON to JS Object
+  const data =  JSON.parse(this.responseText);
+  const filmURL = data.results[0].films[0];
+  const filmRequest = new XMLHttpRequest();
 
+  filmRequest.addEventListener('load', function(){
+    console.log("SECOND REQUEST WORKED")
+    const filmData = JSON.parse(this.responseText);
+    console.log(filmData);
+  })
+  filmRequest.addEventListener('error', function(e){
+    console.log("ERROR", e);
+  })
 
-// this can be too messy see better below
-// fakeRequest('/users').then((res) => {
-//   const id = res.data[0].id;
-//   console.log(res.data[0].id)
-//   fakeRequest(`/users/${id}`).then((res) => {
-//     console.log(res)
-//     const post = res.data.topPostId;
-//     fakeRequest(`/posts/${post}`).then((res) => {
-//       console.log(res.data.title)
-//     })
-//   });
-// }).catch((err) => {
-//   console.log('oh No', err)
-// })
+  filmRequest.open("GET", filmURL);
+  filmRequest.send();
 
-
-// You can chain promises and not nest them
-fakeRequest('/users')
-.then((res) => {
-  console.log(res)
-  const id = res.data[0].id;
-  return fakeRequest(`/users/${id}`)
+  // for(let planet of data.results){
+  //   console.log(planet.name);
+  // }
 })
-.then((res) => {
-  console.log(res)
-  const postID = res.data.topPostId;
-  return fakeRequest(`/posts/${postID}`);
-})
-.then((res) => {
-  console.log(res.data.title)
-})
-.catch((err) => {
-  console.log('oh No', err)
+firstReq.addEventListener('error', ()=> {
+  console.log('ERROR!!!');
 })
 
-
-
-
-
-// .catch((res) => {
-//   console.log(res.status)
-//   console.log('REQUEST FAILED')
-// })
-// fakeRequest('/contact')
-// .then((res) => {
-//   console.log('Status Code', res.status);
-//   console.log('Data', res.data);
-//   console.log('REQUEST WORKED')
-// })
-// .catch((res) => {
-//   console.log(res.status)
-//   console.log('REQUEST FAILED')
-// })
+firstReq.open("GET", "https://swapi.dev/api/planets/");
+firstReq.send();
+console.log("Request Sent!");
