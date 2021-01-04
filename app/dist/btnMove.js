@@ -1,5 +1,3 @@
-const btn = document.querySelector('button');
-
 const moveX = (element, amount, delay) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -16,27 +14,52 @@ const moveX = (element, amount, delay) => {
   });
 };
 
+const btn = document.querySelector('button');
 
-moveX(btn, 150, 500)
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => moveX(btn, 150, 500))
-  .then(() => {
-    console.log('Done with All moves')
-  })
-  .catch(({bodyBoundry, amount, elRight}) => {
-    console.log(`Body is ${bodyBoundry}px wide`);
-    console.log(`Element is at  ${elRight}px,  ${amount}px is too large!`);
-  })
+async function animateRight(el, amt) {
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+  await moveX(el, amt, 1000);
+}
+animateRight(btn, 100).catch((err) => {
+  console.log('ALL DONE');
+  animateRight(btn, -100)
+})
+// Standard Promise catch setup
+// moveX(btn, 150, 500)
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => moveX(btn, 150, 500))
+//   .then(() => {
+//     console.log('Done with All moves')
+//   })
+//   .catch(({bodyBoundry, amount, elRight}) => {
+//     console.log(`Body is ${bodyBoundry}px wide`);
+//     console.log(`Element is at  ${elRight}px,  ${amount}px is too large!`);
+//   })

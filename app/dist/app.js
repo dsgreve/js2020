@@ -1,123 +1,66 @@
-
-// const checkStatusAndParse = (res) => {
-//  if (!res.ok)
-//    // promise return will not reget on 404 or 500 only on network failure use if to test response
-//    throw new Error(`Status Code Error: ${res.status}`);
-
-//  return res.json();
+// EXAMPLE OF SEQUENTIAL REQUESTS
+// async function get3Pokemon() {
+//   const poke1 = await axios.get('https://pokeapi.co/api/v2/pokemon/1')
+//   const poke2 = await axios.get('https://pokeapi.co/api/v2/pokemon/2')
+//   const poke3 = await axios.get('https://pokeapi.co/api/v2/pokemon/3')
+//   console.log(poke1.data.name)
+//   console.log(poke2.data.name)
+//   console.log(poke3.data.name)
 // }
 
-// const printPlanets = (data) => {
-//   console.log("Loaded 10 planets");
-//   for (let planet of data.results) {
-//     console.log(planet.name);
-//   }
-//   return Promise.resolve(data.next)
-// }
+// EXAMPLE OF PARALLEL REQUESTS
+async function get3Pokemon() {
+  // removing the await keywork results in request being a promise
+  const prom1 = axios.get('https://pokeapi.co/api/v2/pokemon/1');
+  const prom2 = axios.get('https://pokeapi.co/api/v2/pokemon/2');
+  const prom3 = axios.get('https://pokeapi.co/api/v2/pokemon/3');
+  // can be moved to helper method of Promise.all that accepts arrays
+  // const poke1 = await prom1;
+  // const poke2 = await prom2;
+  // const poke3 = await prom3;
+  // The results are then displayed in array
+  // console.log(poke1.data)
+  // console.log(poke2.data)
+  // console.log(poke3.data)
+  const results = await Promise.all([prom1, prom2, prom3]);
+  printPokemon(results)
+}
 
-// const fetchNextPlanets = (url = "https://swapi.dev/api/planets/") => {
-//   return fetch(url);
-// };
-
-// fetchNextPlanets()
-//   .then(checkStatusAndParse)
-//   .then(printPlanets)
-//   .then(fetchNextPlanets)
-//   .then(checkStatusAndParse)
-//   .then(printPlanets)
-//   .then(fetchNextPlanets)
-//   .then(checkStatusAndParse)
-//   .then(printPlanets)
-//   .catch((err) => {
-//     console.log("Somehting Went wrong with Fetch!!!!");
-//     console.log(err);
-//   });
-
-
-//Axios will reject 404 errors where Fetch will not
-//Axios no worries about parsing or checking status code
-
-// const fetchNextPlanets = (url = "https://swapi.dev/api/planets/") => {
-//   return axios.get(url)
-// }
-
-// const printPlanets = ({data}) => {
-//   for (let planet of data.results) {
-//     console.log(planet.name);
-//   }
-//   return Promise.resolve(data.next)
-// }
-
-// fetchNextPlanets()
-//   .then(printPlanets)
-//   .then(fetchNextPlanets)
-//   .then(printPlanets)
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
-  //Async functions - ASYNC and WAIT
-  // async is used in front of af function
-  function getData() {
-    const data = axios.get("https://swapi.dev/api/planets/").then(data => {
-      console.log(data);
-    })
-    console.log(data);
+function printPokemon(results) {
+  for (let pokemon of results) {
+    console.log(pokemon.data.name)
   }
+}
 
-  // function great() {
-  //   return "Helloooo!!!"
-  // }
+get3Pokemon()
 
-  //ASYNC Keyword wraps fuction in promise
-  async function greet() {
-    return "Helloooo!!!"
-  }
-  greet().then((val) => {
-    console.log("Promise Resolved!!!")
+function changeBodyColor(color, delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      document.body.style.backgroundColor = color;
+      resolve();
+    }, delay)
   })
+}
+// SEQUENTIAL
+// async function lightShow() {
+//   await changeBodyColor('teal', 1000)
+//   await changeBodyColor('pink', 1000)
+//   await changeBodyColor('violet', 1000)
+//   await changeBodyColor('idigo', 1000)
+// }
 
-  async function add(x,y) {
-    if(typeof x !== 'number'|| typeof y !== 'number') {
-      throw 'X and y must be numbers'
-    }
-    return x + y;
-  }
+// run in parallel so you only get last color
+async function lightShow() {
+  const p1 = changeBodyColor('teal', 1000)
+  const p2 = changeBodyColor('pink', 1000)
+  const p3 = changeBodyColor('violet', 1000)
+  const p4 = changeBodyColor('idigo', 1000)
+  await p1;
+  await p2;
+  await p3;
+  await p4;
+}
 
-  add(10, 15).then(val => {
-    console.log('Promise resolved with: ', val)
-  }).catch(err => {
-    console.log('Promise rejected with: ', err)
-  })
 
-  // // await keyword - runs code after async operation - can only be used in an async function
-  // async function getPlanets() {
-  //   return axios.get("https://swapi.dev/api/planets/");
-  // }
- 
-  // getPlanets().then((res) => {
-  //   console.log(res.data);
-  // });
-
-  // async function getPlanets() {
-  //   const res = await axios.get("https://swapi.dev/api/planetz/");
-  //   console.log(res.data); // only runs once previous line is ran
-  // }
-
-  // getPlanets().catch((err) => {
-  //   console.log('IN CATCH!!!');
-  //   console.log(err)
-  // });
-
-  async function getPlanets() {
-    try {
-      const res = await axios.get("https://swapi.dev/api/planets/");
-      console.log(res.data); // only runs once previous line is ran
-    } catch(e) {
-      console.log('In Catch!!!')
-      console.log(e)
-    }
-  }
-
-  getPlanets()
-  
+lightShow();
