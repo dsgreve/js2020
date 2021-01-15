@@ -8,12 +8,12 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'app/dist')
+    path: path.resolve(__dirname, 'timer')
   },
   devServer: {
     host: '127.0.0.1',
     port: 8080,
-    contentBase: path.resolve(__dirname, 'app/dist'),
+    contentBase: path.resolve(__dirname, 'timer'),
     hot: true
   }
 });
