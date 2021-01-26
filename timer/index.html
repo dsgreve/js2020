@@ -21,10 +21,25 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <svg height="200" width="200">
+      <!-- r = radius  cx, cy = center-->
+      <!-- calculate length 2 * Match.PI 90 -->
+      <circle 
+        r="90"
+        cx="100"
+        cy="100"
+        fill="transparent"
+        stroke="#7D26CD"
+        stroke-width="10"
+        stroke-dasharray="560"
+        stroke-dashoffset="560"
+        />
+    </svg>
     <input id="duration" value="30" />
     <button id="start">Start</button>
     <button id="pause">Pause</button>
     
+    <script src="timer.js" async defer></script>
     <script src="app.js" async defer></script>
   </body>
 </html>
