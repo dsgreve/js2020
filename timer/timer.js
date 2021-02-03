@@ -19,12 +19,12 @@ class Timer {
 
   start = () => {
     if (this.onStart) {
-      this.onStart();
+      this.onStart(this.timeRemaining);
     }
     // runs imediately
     this.tick();
     // runs after 1 second
-    this.intervalId = setInterval(this.tick, 1000);
+    this.intervalId = setInterval(this.tick, 50);
   }
 
   pause = () => {
@@ -41,9 +41,9 @@ class Timer {
     } else {
       // get value string and turn into number 
       //parseFloat supports decimals parseInt does not
-      this.timeRemaining = this.timeRemaining - 1;
+      this.timeRemaining = this.timeRemaining - 0.05;
       if (this.onTick) {
-        this.onTick();
+        this.onTick(this.timeRemaining);
       }
     }
   }
@@ -54,6 +54,7 @@ class Timer {
 
   // setter
   set timeRemaining(time) {
-    this.durationInput.value = time;
+    // toFixed reduces points
+    this.durationInput.value = time.toFixed(2);
   }
 }

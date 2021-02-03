@@ -11,7 +11,8 @@
     <title>Timer</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,23 +22,30 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <svg height="200" width="200">
-      <!-- r = radius  cx, cy = center-->
-      <!-- calculate length 2 * Match.PI 90 -->
-      <circle 
-        r="90"
-        cx="100"
-        cy="100"
-        fill="transparent"
-        stroke="#7D26CD"
-        stroke-width="10"
-        stroke-dasharray="560"
-        stroke-dashoffset="560"
-        />
-    </svg>
-    <input id="duration" value="30" />
-    <button id="start">Start</button>
-    <button id="pause">Pause</button>
+    <div class="timer">
+      <div class="controls">
+        <input id="duration" value="3" />
+        <div>
+          <button id="start"><i class="far fa-play-circle"></i></button>
+          <button id="pause"><i class="fas fa-pause-circle"></i></button>
+        </div>
+      </div>
+      <svg height="400" width="400" class="dial">
+        <!-- r = radius  cx, cy = center-->
+        <!-- calculate length 2 * Match.PI 90 -->
+        <circle 
+          r="190"
+          cx="200"
+          cy="200"
+          fill="transparent"
+          stroke="#7D26CD"
+          stroke-width="12"
+          transform="rotate(-90 200 200)"
+          />
+      </svg>
+  </div>
+    
+   
     
     <script src="timer.js" async defer></script>
     <script src="app.js" async defer></script>

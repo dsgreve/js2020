@@ -1,18 +1,27 @@
 const durationInput = document.querySelector('#duration');
 const startButton = document.querySelector('#start');
 const pauseButton = document.querySelector('#pause');
+const circle = document.querySelector('circle');
 
+const perimeter = circle.getAttribute('r') * 2 * Math.PI;
+
+// set stroke-dasharray to perimeter number
+circle.setAttribute('stroke-dasharray', perimeter)
+
+let duration;
 const timer = new Timer(durationInput, startButton, pauseButton, {
-  onStart() {
+  onStart(totalDuration) {
     console.log("timer started");
+    duration = totalDuration;
   },
-  onTick() {
-    console.log("timer ticked down");
+  onTick(timeRemaining) {
+    circle.setAttribute('stroke-dashoffset',
+    perimeter * timeRemaining / duration - perimeter
+    );
   },
   onComplete() {
     console.log("timer complete")
   }
-
 });
 // timer is invoked on page load
 //timer.start();
