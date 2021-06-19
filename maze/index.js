@@ -1,13 +1,25 @@
-const { Engine, Render, Runner, World, Bodies } = Matter;
+const { 
+  Engine, 
+  Render, 
+  Runner, 
+  World, 
+  Bodies, 
+} = Matter;
+
+const width = 600;
+const height = 600;
+
 
 const engine = Engine.create();
+
 const { world } = engine;
 const render = Render.create({
   element: document.body,
   engine: engine,
   options: {
-    width: 800,
-    height: 600
+    wireframes: true,
+    width: width,
+    height: height
   }
 });
 
@@ -16,11 +28,28 @@ Runner.run(Runner.create(), engine);
 
 // Walls
 const walls = [
-  Bodies.rectangle(400, 0, 800, 50, { isStatic: true }),
-  Bodies.rectangle(400, 600, 800, 50, { isStatic: true }),
-  Bodies.rectangle(0, 300, 50, 600, { isStatic: true }),
-  Bodies.rectangle(800, 300, 50, 600, { isStatic: true })
+  Bodies.rectangle(width / 2, 0, width, 40, { isStatic: true }),
+  Bodies.rectangle(width / 2, height, width, 40, { isStatic: true }),
+  Bodies.rectangle(0, height / 2, 40, height, { isStatic: true }),
+  Bodies.rectangle(width, height / 2, 40, height, { isStatic: true })
 ];
-
 World.add(world, walls)
-World.add(world, Bodies.rectangle(200, 200, 50, 50))
+
+// Maze Generation
+
+
+
+// using nested for loop
+// const grid = [];
+// for (let i = 0; i < 3; i++) {
+//   grid.push([]);
+//   for (let j = 0; j < 3; j++) {
+//     grid[i].push(true);
+//   }
+// }
+
+const grid = Array(3).fill(true).map(() => Array(3).fill(false));
+
+
+
+console.log(grid);
