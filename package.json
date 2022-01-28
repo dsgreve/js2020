@@ -33,7 +33,9 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "express": "^4.17.2",
     "lodash": "^4.17.20",
+    "nodemon": "^2.0.15",
     "validator": "^13.1.17"
   }
 }
