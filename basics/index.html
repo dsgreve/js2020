@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JsBasics</title>
+</head>
+<body>
+  <div class="main">
+    <h1></h1>
+    <h2 class="random">Display Random Number</h2>
+    <p></p>
+    <h2 class="array">Display Array</h2>
+  </div>
+</body>
+<script>
+  const intro = document.querySelector("h1");
+  const pi = Math.PI;
+  const welcomeText = document.createTextNode(`Welcome to my page. 
+  Have a slice of ${pi}.
+  `);
+  intro.appendChild(welcomeText);
+</script>
+
+<script src="./loops.js"></script>
+
+</html>
