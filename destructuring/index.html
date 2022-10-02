@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  Hello
+  <script>
+    //destructuring arrays
+    const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ]
+    const nums = ['1', '2', '4', '4', '5', '6', '7', '8', '0' ]
+    const newArray = [...alphabet, ...nums];
+    console.log(newArray.length);
+    console.log(newArray.length);
+    const [a,,c, ...rest] = alphabet;
+    console.log(`${a} and ${c}`);
+    console.log(`${rest}`);
+  
+    function sumAndMultiply(a,b) {
+      return[a+b, a*b, a/b]
+    }
+
+    const[sum, multiply, division='no division'] = sumAndMultiply(2, 10);
+    console.log(sum);
+    console.log(multiply);
+    console.log(division);
+
+    //destructing objects
+    const personOne = {
+      name: 'Kyle',
+      favFood: 'Cheesecake',
+      age: 24,
+      address: {
+        city: 'Troy',
+        state: 'Michigan'
+      }
+    }
+
+    const personTwo = {
+      name: 'Sara',
+      age: 28,
+      faveFood: 'Tacos',
+      address: {
+        city: 'Toledo',
+        state: 'Ohio'
+      }
+    }
+
+    const { name: firstName, address: { state } } = personOne;
+
+    console.log(firstName);
+    console.log(state);
+
+    function printUser({name, age, faveFood = 'Apples'}) {
+      console.log(`Name is ${name}. Age is ${age}. Favorite food is ${faveFood}`);
+    }
+
+    printUser(personTwo);
+
+    
+    </script>
+</body>
+</html>
