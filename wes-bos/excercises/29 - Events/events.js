@@ -16,20 +16,23 @@ coolButt.addEventListener("click", hooray);
 // listen to events on mulitple items
 
 const buyButtons = document.querySelectorAll(".buy");
-function attachListenerBuyButton(e) {
-  console.log('Binding Buy Buttons')
-  e.addEventListener("click", buyItem);
+function handleBuyButtonClick(event) {
+  const button = event.target;
+  // console.log(button.textContent);
+  // console.log(parseFloat(event.target.dataset.price));
+  // in most cases current target but be cautious of nested elements
+  // it is possible to click on multiple things at once - progigation
+  // clicks "bubble up" a click on a span - parent - window
+  console.log(event.currentTarget);
+  console.log(event.target === event.currentTarget);
+  // stop bubbling up
+  event.stopPropagation();
 }
 
-function buyItem() {
-  console.log(`Buy Item`);
-}
-
-buyButtons.forEach(attachListenerBuyButton);
-
-buyButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    console.log('You Clicked Button');
-  });
+buyButtons.forEach(function(buyButton) {
+  buyButton.addEventListener('click', handleBuyButtonClick);
 });
 
+window.addEventListener('click', function(event) {
+  console.log(event.target);
+});
