@@ -13,7 +13,7 @@
 
     <form name="signup">
       <label for="name">Name</label>
-      <input type="text" id="name" name="name" value="Wes Bos">
+      <input type="text" id="name" name="name">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" value="wesbos@gmail.com">
       <input type="checkbox" id="agree" name="agree">
@@ -21,7 +21,11 @@
       <hr>
       <button type="submit">Submit</button>
     </form>
+    
+    <!-- make non button item accessible -->
+    <img class="photo" role="button" tabindex="0" src="//picsum.photos/200" alt="Nice">
   </div>
+  
   <script src="./forms.js"></script>
 </body>
 
