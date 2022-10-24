@@ -10,6 +10,8 @@ function scrollToAccept() {
   function obCallback(payload) {
     if (payload[0].intersectionRatio === 1) {
       button.disabled = false;
+      // stop observing to prevent unessary cpu usage
+      // ob.unobserve(terms.lastElementChild);
     } else {
       button.disabled = true;
     }
