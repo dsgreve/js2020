@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>I Like Turtles</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../base.css">
+    <style>
+      .turtle {
+        position: relative;
+        --x: 10px;
+        --y: 10px;
+        transform: translateX(var(--x)) translateY(var(--y));
+      }  
+    </style>
+  </head>
+ 
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <img src="./turtle.svg" width="200" height="200" class="turtle" alt="turtle" />
+    <script>
+      const turtle = document.querySelector('.turtle');
+      let x = 0;
+      let y = 0;
+      const turtleMove = 10;
+
+      function handleKeyDown(event) {
+        // if not an arrow key
+        if (!event.key.includes('Arrow')) return;
+        
+        switch (event.key) {
+          case 'ArrowUp':
+            y = y - turtleMove;
+            break;
+          case 'ArrowDown':
+            y = y + turtleMove;
+            break;
+          case 'ArrowLeft':
+            x = x - turtleMove;
+            break;
+          case 'ArrowRight':
+            x = x + turtleMove;
+            break;
+          default:
+            console.log('Not a valid Move');
+        }
+        console.log(`${y} and ${x}`);
+        turtle.style['--y'] = `${y}`;
+        turtle.style['--x'] = `${x}`;
+        
+      }
+      
+      window.addEventListener('keydown', handleKeyDown);
+
+    </script>
+  </body>
+</html>

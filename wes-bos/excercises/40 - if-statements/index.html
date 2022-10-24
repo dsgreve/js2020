@@ -72,8 +72,12 @@
 
       const isAdmin = true;
       // isAdmin ? showAdminBar() : null;
+      // can "abuse" the && check because once false it quits running
       isAdmin && showAdminBar();
-      
+
+      // blockless can be used if if-statement is on one line
+      // example if (isAdmin) showAdminBar();
+
       function check1() {
         console.log('running check 1');
         return true;
