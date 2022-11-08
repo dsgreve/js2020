@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Objects</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+      <ul class="prizes"></ul>
+    <script>
+      const myMap = new Map();
+      console.log(myMap);
+      //.set() - keys can be any type could be useful if you ;
+      const person1 = {
+          name: 'Dave',
+          age: 55,
+      }
+      myMap.set('name', 'Scott');
+      myMap.set(100, 'This is a number');
+      myMap.set(person1, 'Really Cool');
+
+      console.log(myMap.get(person1));
+
+      const score = 300;
+      const prizes = new Map();
+
+      prizes.set(100, 'Bear');
+      prizes.set(200, 'Duck');
+      prizes.set(300, 'Car');
+
+      console.log(`you win a ${prizes.get(score)}`);
+      const ul = document.querySelector('.prizes');
+
+      prizes.forEach(entry => {
+        console.log(entry);
+      });
+
+      for(const [points, prize] of prizes) {
+        const li = `<li>${points} - ${prize}</li>`;
+        ul.insertAdjacentHTML('beforeend', li);
+      }
+      // maps used when order must be maintained
+      //
+
+      // object values order are not guarateed but maps are
+      //.has();
+      //.delete();
+      myMap.delete('name');
+
+      let person2 = {
+        name: 'wes',
+        age: 43
+      }
+
+      person2 = JSON.stringify(person2);
+      console.log(person2);
+
+      person2 = JSON.parse(person2);
+      console.log(person2);
+
+      // json does not work with maps
+    </script>
+
+  </body>
+</html>

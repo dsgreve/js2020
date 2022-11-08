@@ -16,7 +16,9 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
+    <input name="first" value="Scott">
+    <script src="https://unpkg.com/lodash@4.17.21/lodash.js"></script>
     <script>
       // object literal syntax
       // const object = {
@@ -25,13 +27,98 @@
 
       const age = 100;
         // if variable value is decalered outside of object just the variable cna be used for both keyword and value
-      const personTwo = {
+      const person = {
         age,
-        name: 'west',
-        'cool-due': true,
+        name: 'Scott',
+        'cool-dude': true,
         'Really Cool': false,
-        777: true
+        777: true,
+        dog: 'Sneakers',
+        clothing: {
+          shirts: 10,
+          pants: 2,
+        },
+        sayHello: function(greeting = 'Hello') {
+          return `${greeting} ${this.name}`;
+        },
+        sneeze: () => {
+          console.log('Ahhh Choo', this)
+        }
       };
+
+      //const propertyToCheck = prompt('What do you want to check?');
+
+      //console.log(propertyToCheck);
+      // use of square bracket notation when property is stored in a varibale
+      
+      //console.log(person[propertyToCheck]);
+      // or for invalid property look ups
+      console.log(person['cool-dude']);
+      console.log(person['777']);
+      console.log(person['Really Cool']);
+
+      person.jobs ? person.jobs.side : `Jobs doesn't exist`;
+
+      const nameInput = document.querySelector(`[name="first"]`);
+
+      const name = nameInput ? nameInput.value : '';
+      console.log(name);
+      let name1 = "scott";
+      let name2 = "scott";
+      console.log(name1 === name2);
+      name2 = "wes";
+      console.log(name1 === name2);
+      name1 = name2
+      console.log(name1 === name2);
+
+      const person1 = {
+        first: 'Scott',
+        last: 'Greve',
+        clothing: {
+          pants: 10,
+          shirts: 5,
+        },
+      }
+
+      const person2 = {
+        first: 'Scott',
+        last: 'Greve',
+        clothing: {
+          pants: 3,
+          shirts: 15,
+        },
+      }
+
+      // person3 - when object/arrays are created as a reference it does not copy it, but you are pointing at the original
+      const person3 = person1;
+      person3.first = 'larry';
+      console.log(person1.first);
+      console.log(person3.first);
+      // using a spread to duplicate an object creates a new object and does not reference the orginal - shallow copy - only first level of object is new, second level still references the original
+      // old way before spread
+      const person4 = {...person2}
+      console.log(person2.first);
+      console.log(person4.first);
+      person4.first = 'Moe';
+      console.log(person2.first);
+      console.log(person4.first);
+      person4.clothing.shirts = 100;
+
+      console.log(person2.clothing.shirts);
+      console.log(person4.clothing.shirts);
+
+      // old way before spread
+      const person5 = Object.assign({}, person1);
+      person5.first = 'Curly';
+      console.log(person1.first);
+      console.log(person5.first);
+
+      // lodash has an ability to create a deep clone.
+      const person6 = _.cloneDeep(person2);
+      person6.clothing.shirts = 100;
+
+      console.log(person1.clothing.shirts);
+      console.log(person6.clothing.shirts);
     </script>
   </body>
 </html>

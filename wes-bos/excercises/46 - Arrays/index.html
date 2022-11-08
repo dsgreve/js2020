@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays</title>
+</head>
+<body>
+  <script>
+    // array literal
+    // array has no keys but uses index
+    const pets = [ 'Parker', 'Jasper', 'Pepee', 'Snoops','Parker', 'Jasper', 'Pepee', 'Snoops','Parker', 'Jasper', 'Pepee', 'Snoops','Parker', 'Jasper', 'Pepee', 'Snoops', 'Scooby' ];
+    console.log(pets.length);
+
+    console.log(pets[pets.length]);
+    // get last item
+    console.log(pets[pets.length - 1]);
+    // arrays are mutable - changes the original data
+    pets.push('Marvin');
+    console.log(pets);
+    console.log(pets[pets.length - 1]);
+
+    const pets2 = [...pets, 'Dora']
+    pets2.unshift('Lambchop');
+    console.log(pets2);
+
+
+    const numbers = [1,2,3,4,5,6,7,8,9,10];
+    //numbers.reverse();
+    // want to use a mutation method and NOT mutate original.. Make a copy of the array
+    // use spread
+    const numbersReversed  = [...numbers].reverse();
+    console.log(numbers)
+    console.log(numbersReversed)
+
+
+    
+
+    // immutable - DOES NOT change original data
+    const pizzaSLice = numbers.slice(2,4);
+
+    const months = ['Jan', 'March', 'April', 'June', 'July', 'August'];
+    console.log(months);
+    months.splice(1,0, 'February');
+    console.log(months);
+    const bikes = ['bianchi', 'miel', 'panasonic', 'suzuki'];
+    const newBikes = [
+      ...bikes.slice(0,2),
+      'harley',
+      ...bikes.slice(2)
+    ];
+
+    console.log(newBikes);
+
+    const newBikes2 = [
+      ...newBikes.slice(0,3),
+      ...newBikes.slice(4)
+    ];
+  console.log(newBikes2);
+    const comments = [
+      {
+        text: 'cool beans',
+        name: 'scott',
+        id: 123,
+      },
+      {
+        text: 'not cool bro',
+        name: 'dale',
+        id: 124,
+      },
+      {
+        text: 'maybe not today',
+        name: 'sally',
+        id: 126,
+      },
+      {
+        text: 'ROFL',
+        name: 'jessica',
+        id: 127,
+      }
+    ]
+
+    function deleteCommment(id, comments) {
+      // find index of item in array
+      // make new array without
+      // return new array
+    }
+
+    const monthsIndex = months.findIndex(month => {
+      if(month === 'July') {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    console.log(monthsIndex);
+    console.log(months[monthsIndex]);
+    // methods
+  </script>
+</body>
+</html>
