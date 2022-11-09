@@ -19,7 +19,7 @@
     const meats = {
       beyond: 10,
       beef: 5,
-      pork: 7
+      pork: 2
     };
 
     const prices = {
@@ -134,7 +134,7 @@
     if(!isInToppings) {
       toppings.push('Hot Sauce');
     } else {
-      alert('Hot Sauce is already on the list');
+      console.log('Hot Sauce is already on the list');
     }
     console.log(toppings)
     // flip those toppings around with reverse()
@@ -146,16 +146,95 @@
     */
 
     // find the first rating that talks about a burger with find()
+    // function findBurgRating(singleFeedback) {
+    //   return singleFeedback.comment.includes('burg');
+    // }
+    // const findBurgRating = (singleFeedback) => {
+    //   return singleFeedback.comment.includes('burg');
+    // }
+    //refactored down to a single line arrow function
+    //const findBurgRating = (singleFeedback) => singleFeedback.comment.includes('burg');
+    // const util = {
+    //   findBurgRating: function(singleFeedback) {
+    //     return singleFeedback.comment.includes('burg');
+    //   }
+    // }
+    //const burgerRating = feedback.find(util.findBurgRating);
+    function findByWord(word) {
+      return function(singleFeedback) {
+        return singleFeedback.comment.includes(word);
+      }
+    }
+
+    const burgFinder = findByWord('burg');
+    const burgRating = feedback.find(burgFinder);
+    const smoothieFinder = findByWord('Smoothie');
+    const smoothieRating = feedback.find(smoothieFinder)
+    console.log(burgRating);
+    console.log(smoothieRating);
     // find all ratings that are above 2 with filter()
+    
+    function filterByMinRating(minRating) {
+      return function(singleFeedback) {
+        return singleFeedback.rating > minRating
+      }
+    } 
+    const goodReviews = feedback.filter(filterByMinRating(3));
+
+    console.table(goodReviews);
+    
     // find all ratings that talk about a burger with filter()
+    //const burgRatings = feedback.filter(singleFeedback => singleFeedback.comment.includes('burg'))
+
+    const burgRatings = feedback.filter(findByWord('burg'));
+    console.table(burgRatings);
+    
     // Remove the one star rating however you like!
-
+    const legitRatings = feedback.filter(single => single.rating !== 1);
+    console.table(legitRatings);
     // check if there is at least 5 of one type of meat with some()
+    const isThereEnoughMeat = Object.values(meats).some(meatValue => meatValue >= 5);
+    console.log(isThereEnoughMeat);
     // make sure we have at least 3 of every meat with every()
+    const isThereEnoughOfEveryMeat = Object.values(meats).every(meatValue => meatValue >= 3);
+    console.log(isThereEnoughOfEveryMeat);
     // sort the toppings alphabetically with sort()
+    const toppingsList = toppings.sort();
+    console.log(toppingsList);
     // sort the order totals from most expensive to least with .sort()
-    // Sort the prices with sort()
+    const orderTotalsList = orderTotals.sort();
+    const numbers = [1,2,100,3,200,400,155]
+    const numbsersSorted = numbers.sort(function(firstItem, secondItem) {
+      console.log(firstItem, secondItem);
+      return firstItem - secondItem;
+      // long way
+      // if(firstItem > secondItem) {
+      //   return 1
+      // } else if (secondItem > firstItem) {
+      //   return -1
+      // } else {
+      //   return 0;
+      // }
+    })
+    console.log(numbsersSorted);
+    // actual orders array reduced to arrow function
+    const ordersMostToLeastExpensive = orderTotals.sort((firstItem, secondItem) => secondItem - firstItem);
 
+    console.log(ordersMostToLeastExpensive);
+
+    // or crate a sorting function
+    function numberSort(a,b) {
+      return b - a;
+    }
+
+    console.log(orderTotals.sort(numberSort));
+    // Sort the prices with sort()
+    const productsSortedByPrice = Object.entries(prices).sort(function(a,b) {
+      const aPrice = a[1];
+      const bPrice = b[1];
+      return aPrice - bPrice;
+    });
+    console.table(Object.fromEntries(productsSortedByPrice));
     /*
       Looping Methods (next)
     */
