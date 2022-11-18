@@ -205,6 +205,40 @@
     console.log(`${student.first_name} ${student.last_name}`);
     console.log(`${studentTwo.first_name} ${studentTwo.last_name} ID: ${studentTwo.id}`);
 
+    // Reduce
+    //console.clear();
+    function tallyNumbers(tally, currentTotal) {
+      console.log(`Current Tally is ${tally}`);
+      console.log(`Current Total is ${currentTotal}`);
+      console.log(`-----------------`);
+
+      // return current Tally PLUS amout of this order
+      return tally + currentTotal
+    }
+    let allOrders = orderTotals.reduce(tallyNumbers, 0);
+    console.log(allOrders);
+    console.log(allOrders);
+
+    function inventoryReducer(totals, item) {
+      console.log(`Looping over ${item.type}`)
+      // increment type by 1
+      // if (totals.shirt) {
+      //   totals.shirt = totals.shirt + 1;
+      // } else {
+      //   totals.shirt = 1;
+      // }
+      // turned if statement into a one liner
+      totals[item.type] = totals[item.type] + 1 || 1;
+      
+      // return the totals so next loop can use it
+      return totals;
+    }
+    const inventoryCounts = inventory.reduce(inventoryReducer, {});
+    console.log(inventoryCounts);
+
+    // single line, start from 0 add accumulator and add price of item t previous
+    const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0);
+    console.log(totalInventoryPrice);
   </script>
 </body>
 
