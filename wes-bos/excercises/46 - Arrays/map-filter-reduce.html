@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>
+
+  </title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+
+<body>
+    <script>
+      const text = `
+  Coast Guard crew carrying Christmas Tree Ship load is crossing Lake Michigan
+  Published: Nov. 27, 2022, 8:42 a.m.
+  U.S. Coast Guard Cutter Mackinaw
+  Members of the Cheboygan community and a local high school helped the Mackinaw crew load trees for its annual Christmas
+  Tree Ship run to Chicago. Photo provided by the U.S. Coast Guard.
+  
+  facebook
+  twitter
+  Signed-in readers now can bookmark stories to read later.
+  
+  NEW!
+  
+  By Tanda Gmiter | tgmiter@mlive.com
+  The crew of the U.S. Coast Guard Cutter Mackinaw is motoring down Lake Michigan today and nearing Chicago, where its
+  load of more than 1,200 Christmas trees will be used to recreate the holiday spirit of Michigan’s ill-fated Christmas
+  Tree Ship, which sank in late November 1912.
+  
+  The rugged, 240-foot icebreaker left Cheboygan, Michigan on Saturday after volunteers from the nearby Wolverine High
+  School and the community helped the Mackinaw’s crew load the hundreds of net-wrapped trees onto the cutter’s fantail.
+  For the commemorative trip, the Mackinaw is also flying a custom-made tree pennant, the Coast Guard said.
+  
+  
+  The journey has been a sentimental favorite for the cutter’s crew and groups in Northern Michigan and Chicago for years.
+  
+  U.S. Coast Guard Cutter Mackinaw
+  The U.S. Coast Guard Cutter Mackinaw, loaded with 1,200 Christmas Trees, traveled under the Mackinac Bridge on its way
+  to Chicago. Photo provided by the U.S. Coast Guard.
+  
+  
+  “The Mackinaw does this to honor the Rouse Simmons, a three-masted schooner which tragically sank in 1912 while sailing
+  to Chicago to deliver Christmas trees. We are honored to carry on this Christmas tradition and spread holiday cheer!”
+  the crew said in a recent social media post.
+  
+  RELATED: Michigan’s famous Christmas Tree Ship sank 110 years ago this week
+  
+  Click here to see a Coast Guard video of the crew and their helpers loading the Mackinaw.
+  
+  Earlier this weekend, spectators gathered in Northern Michigan as the ship left its pier, bound for Chicago. “1,200
+  Christmas trees secured to the fantail, a custom tree wind pennant compliments of the CO (well done, Captain!), and
+  Santa and his elf dancing on the flybridge.... Its official- U.S. Coast Guard Cutter Mackinaw WLBB 30 is underway for
+  their annual Christmas tree run!,” the U.S. Coast Guard Great Lakes group said Saturday in a social media post. “The
+  crew is in high spirits as spectators waved and cheered the ship off the pier. Stay tuned to see what Mackinaw and her
+  crew are up to as they transit to #Chicago to complete this unique mission!”
+  
+  The holiday trees are funded by donations to Chicago’s Christmas Ship committee. They’ll be delivered to that city’s
+  Navy Pier, where the trees will be distributed to Chicagoans for their holiday celebrations. The Mackinaw crew is also
+  getting some of its late fall work done during the journey, with some buoy-tending along the way.
+  
+  "Captain Santa"
+  "Captain Santa" and two crewmen on the deck of the Rouse Simmons
+  
+  
+  As it has for decades, the Coast Guard is recreating the Christmastime journey of the Rouse Simmons, which sank on Nov.
+  23, 1912 in a fierce gale off the coast of Two Rivers, Wisconsin.
+  
+  Built in 1868 in Wisconsin, the Rouse Simmons was one of many Great Lakes maritime workhorses, ferrying lumber and other
+  cargo from port to port.
+  
+  By 1910, Capt. Herman Schuenemann owned a small interest in her. For years, his family had been among the two dozen
+  schooner crews doing late-season Christmas tree runs, bringing evergreens from northern Michigan and Wisconsin to
+  Chicago’s docks. The ships would be decorated with lights, and the families could come aboard and pick out an
+  inexpensive tree. By cutting out the retail middleman, captains could get a decent profit from a holiday run.
+  
+  Known for his generosity, Schuenemann earned the nickname “Captain Santa.” On its last run in 1912, the Rouse Simmons
+  was crammed with more than 5,000 trees, enough to make some say the ship looked like a floating forest when it set off
+  from Thompson, Michigan, near the Upper Peninsula’s Manistique, on Friday, Nov. 22, 1912. By the next afternoon, the
+  ship was gone.
+  
+  The entire crew was lost, believed to be around 14 men. There were also accounts that lumberjacks working in Northern
+  Michigan had hitched a ride, trying to get home to Chicago for Christmas. That would push the death toll to possibly 23.
+  
+  
+  The Christmas tree cargo has become a tradition for the Coast Guard. In the last 20 years, the cutter Mackinaw and its
+  predecessor of the same name have delivered more than 25,000 Christmas trees to Chicago families.
+  `
+
+  //console.log(everything)
+  function isValidChar(char) {
+    return char.match(/[a-z0-9]/)
+  }
+
+  // function lowerCase(char) {
+  //   return char.toLowerCase();
+  // }
+  const lowerCase = char => char.toLowerCase();
+
+  function instanceCounter(counts, char) {
+    counts[char] 
+    ? counts[char] = counts[char] + 1 
+    : counts[char] = 1;
+
+    return counts;
+  }
+
+  const result = text
+    .split('') // split each char into an item in arracy
+    .filter(isValidChar)
+    .map(lowerCase)
+    .reduce(instanceCounter, {});
+
+    function sortByValue(a, b) {
+      return a[1]- b[1]
+    }
+    const sortedResult = Object
+    .entries(result)
+    .sort(sortByValue)
+
+    console.log(sortedResult)
+  </script>
+</body>
+
+</html>
