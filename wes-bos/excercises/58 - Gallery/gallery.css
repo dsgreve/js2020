@@ -20,6 +20,10 @@
       border:1px solid black;
     }
 
+    .gallery img:focus {
+      border: 2px solid red;
+    }
+
     .modal {
       position: fixed;
       background: rgba(0, 0, 0, 0.5);
